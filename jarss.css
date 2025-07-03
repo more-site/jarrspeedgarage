@@ -146,6 +146,8 @@ header nav ul li a:hover {
 
 /* --- Bagian Lainnya (Tidak Berubah) --- */
 /* Hero Section */
+/* Hero Section */
+/* Hero Section */
 .hero-section {
     position: relative;
     text-align: center;
@@ -161,23 +163,38 @@ header nav ul li a:hover {
 
 .hero-content {
     position: absolute;
-    top: 50%;
+    top: 50%; /* Default: di tengah secara vertikal */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Default: memusatkan */
     width: 80%;
     max-width: 800px;
     z-index: 1;
 }
 
-.hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
+/* --- Media Queries for Responsive Design --- */
+@media (max-width: 768px) {
+    /* ... kode lainnya di media query ... */
+
+    .hero-content {
+        top: 100px; /* Jarak dari atas (relative to hero-section top) */
+        /* Kita perlu menyesuaikan transform agar tidak lagi memusatkan dari tengah section */
+        transform: translateX(-50%); /* HANYA memusatkan secara horizontal */
+        text-align: center; /* Pastikan teks tetap di tengah */
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    /* ... kode media query lainnya ... */
 }
 
-.hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
+    /* ... kode media query lainnya ... */
+
 
 .cta-button {
     display: inline-block;
