@@ -146,88 +146,103 @@ header nav ul li a:hover {
 
 /* --- Bagian Lainnya (Tidak Berubah) --- */
 /* Hero Section */
+/* Hero Section */
 .hero-section {
-    position: relative;
+    position: relative; /* Penting untuk positioning absolute di dalamnya */
     text-align: center;
     color: rgb(255, 255, 255);
-    /* Hapus padding-top dari sini (global), jika belum dihapus */
+    height: 500px; /* Kembali ke tinggi tetap untuk desktop agar ada space */
+    display: flex; /* Gunakan flexbox untuk memusatkan konten secara otomatis */
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    overflow: hidden; /* Pastikan tidak ada konten yang keluar dari hero-section */
+    padding: 20px 5%; /* Tambahkan padding agar konten tidak terlalu mepet tepi */
 }
 
-.hero-section img {
+/* Pseudo-element untuk gambar latar belakang */
+.hero-section::before {
+    content: ''; /* Wajib untuk pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px; /* Tinggi tetap untuk desktop */
-    object-fit: cover;
-    filter: brightness(50%);
+    height: 100%;
+    background-image: url('velg1.jpeg'); /* Ganti dengan gambar hero Anda */
+    background-size: cover; /* Pastikan gambar menutupi seluruh area */
+    background-position: center; /* Pusatkan gambar */
+    background-repeat: no-repeat;
+    filter: brightness(50%); /* Efek gelap */
+    z-index: -1; /* Tempatkan di belakang konten */
+}
+
+/* HAPUS ATURAN INI UNTUK .hero-section img */
+/* Karena sekarang gambar ditangani oleh ::before */
+.hero-section img {
+    display: none; /* Sembunyikan elemen <img> Anda */
+    /* width: 100%; */
+    /* height: 500px; */
+    /* object-fit: cover; */
+    /* filter: brightness(50%); */
 }
 
 .hero-content {
-    position: absolute; /* Tetap absolute untuk desktop */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* Ubah menjadi relative agar tetap di atas gambar latar */
+    /* Atau tetap absolute jika Anda ingin kontrol presisi, tapi relative lebih mudah */
+    /* Jika tetap absolute, maka: */
+    /* position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+    */
     width: 80%;
     max-width: 800px;
-    z-index: 1;
+    z-index: 1; /* Pastikan di atas gambar latar */
+    /* Hapus padding-top dan margin-top yang mungkin ada di sini */
+    padding: 0;
+    margin: 0;
 }
+
 /* --- Media Queries for Responsive Design --- */
 @media (max-width: 768px) {
     /* ... kode header mobile Anda yang sudah rapi ... */
 
     /* Perbaikan untuk Hero Section dan Hero Content di Mobile */
     .hero-section {
-        padding-top: 150px; /* Ini sudah bagus untuk mendorong konten di bawah header */
-        padding-bottom: 30px; /* Tambahkan padding bawah */
-        
-        /* PENTING: HAPUS TINGGI TETAP 500PX UNTUK MOBILE */
-        height: auto; /* Biarkan tingginya menyesuaikan konten */
-        min-height: 400px; /* Beri tinggi minimum agar gambar tidak terlalu kecil jika konten sedikit */
-        display: flex; /* Gunakan flexbox untuk mengelola item di dalamnya */
-        flex-direction: column; /* Susun item secara vertikal */
-        justify-content: flex-start; /* Mulai konten dari atas setelah padding-top */
+        height: auto; /* Biarkan tinggi menyesuaikan konten */
+        min-height: 400px; /* Tinggi minimum untuk mobile */
+        padding-top: 150px; /* Padding dari atas untuk memberi ruang di bawah header */
+        padding-bottom: 50px; /* Padding bawah untuk memberi ruang di bawah konten */
+        justify-content: flex-start; /* Konten dimulai dari atas setelah padding-top */
     }
 
-    .hero-section img {
-        /* PENTING: JANGAN BIARKAN GAMBAR MEMAKSA TINGGI SECTION */
-        position: absolute; /* Jadikan gambar absolut untuk memenuhi section */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; /* Buat gambar memenuhi tinggi hero-section */
-        object-fit: cover; /* Pastikan gambar tetap menutupi area tanpa terdistorsi */
-        filter: brightness(50%); /* Pertahankan efek gelap */
-        z-index: -1; /* Posisikan di belakang konten */
-    }
-
+    /* .hero-section::before (gambar latar) tidak perlu diubah di sini */
 
     .hero-content {
-        position: static; /* Biarkan static untuk alur dokumen normal */
-        width: 100%; /* Mengambil lebar penuh container */
-        transform: none; /* Hapus transform karena tidak lagi absolute */
-        top: auto;
-        left: auto;
-        padding: 0 5%; /* Padding horizontal untuk teks */
+        position: relative; /* Tetap relative di mobile */
+        width: 100%;
+        transform: none; /* Tidak ada transform */
+        top: auto; /* Tidak ada top */
+        left: auto; /* Tidak ada left */
+        padding: 0 5%; /* Padding horizontal untuk konten */
         box-sizing: border-box;
-        
-        /* Tambahkan margin-bottom untuk memberikan jarak setelah konten hero */
-        margin-bottom: 20px; /* Beri sedikit ruang setelah teks hero-content */
     }
-
-    /* ... kode media query lainnya ... */
-}
     
     .hero-content h1 {
         font-size: 2em;
-        margin-bottom: 10px; /* Jarak bawah judul */
+        margin-bottom: 10px;
     }
 
     .hero-content p {
         font-size: 1em;
-        margin-bottom: 20px; /* Jarak bawah paragraf */
+        margin-bottom: 20px;
     }
 
     .hero-content .cta-button {
-        margin-top: 10px; /* Jarak atas tombol */
+        margin-top: 10px;
     }
+
+    /* ... kode media query lainnya ... */
+}
 
     /* ... kode media query lainnya ... */
 
