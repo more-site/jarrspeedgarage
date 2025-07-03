@@ -146,54 +146,74 @@ header nav ul li a:hover {
 
 /* --- Bagian Lainnya (Tidak Berubah) --- */
 /* Hero Section */
-/* Hero Section */
-/* Hero Section */
-/* Hero Section */
 .hero-section {
     position: relative;
     text-align: center;
     color: rgb(255, 255, 255);
-    /* Di desktop, biarkan menempel, tidak ada padding-top di sini */
+    /* Hapus padding-top dari sini (global), jika belum dihapus */
 }
 
 .hero-section img {
     width: 100%;
-    height: 500px;
+    height: 500px; /* Tinggi tetap untuk desktop */
     object-fit: cover;
     filter: brightness(50%);
 }
 
 .hero-content {
-    position: absolute;
-    top: 50%; /* Default untuk desktop */
+    position: absolute; /* Tetap absolute untuk desktop */
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Default untuk desktop */
+    transform: translate(-50%, -50%);
     width: 80%;
     max-width: 800px;
     z-index: 1;
 }
-
 /* --- Media Queries for Responsive Design --- */
 @media (max-width: 768px) {
     /* ... kode header mobile Anda yang sudah rapi ... */
 
-    /* **PERBAIKAN UNTUK HERO SECTION DAN HERO CONTENT DI MOBILE** */
+    /* Perbaikan untuk Hero Section dan Hero Content di Mobile */
     .hero-section {
-        /* Tambahkan padding-top di sini KHUSUS UNTUK MOBILE */
-        /* Sesuaikan nilai ini hingga cukup di bawah header. Mulai dengan 150px, bisa lebih. */
-        padding-top: 150px;
-        padding-bottom: 30px; /* Tambahkan padding bawah agar konten tidak terlalu menempel ke bawah */
+        padding-top: 150px; /* Ini sudah bagus untuk mendorong konten di bawah header */
+        padding-bottom: 30px; /* Tambahkan padding bawah */
+        
+        /* PENTING: HAPUS TINGGI TETAP 500PX UNTUK MOBILE */
+        height: auto; /* Biarkan tingginya menyesuaikan konten */
+        min-height: 400px; /* Beri tinggi minimum agar gambar tidak terlalu kecil jika konten sedikit */
+        display: flex; /* Gunakan flexbox untuk mengelola item di dalamnya */
+        flex-direction: column; /* Susun item secara vertikal */
+        justify-content: flex-start; /* Mulai konten dari atas setelah padding-top */
     }
 
-    .hero-content {
-        position: static; /* Ubah menjadi static agar tidak diposisikan absolut */
-        width: 100%; /* Pastikan mengambil lebar penuh container */
-        transform: none; /* Hapus transform karena tidak lagi absolute */
-        top: auto; /* Hapus properti top */
-        left: auto; /* Hapus properti left */
-        padding: 0 5%; /* Tambahkan padding horizontal agar tidak terlalu mepet tepi */
-        box-sizing: border-box; /* Pastikan padding masuk dalam perhitungan lebar */
+    .hero-section img {
+        /* PENTING: JANGAN BIARKAN GAMBAR MEMAKSA TINGGI SECTION */
+        position: absolute; /* Jadikan gambar absolut untuk memenuhi section */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Buat gambar memenuhi tinggi hero-section */
+        object-fit: cover; /* Pastikan gambar tetap menutupi area tanpa terdistorsi */
+        filter: brightness(50%); /* Pertahankan efek gelap */
+        z-index: -1; /* Posisikan di belakang konten */
     }
+
+
+    .hero-content {
+        position: static; /* Biarkan static untuk alur dokumen normal */
+        width: 100%; /* Mengambil lebar penuh container */
+        transform: none; /* Hapus transform karena tidak lagi absolute */
+        top: auto;
+        left: auto;
+        padding: 0 5%; /* Padding horizontal untuk teks */
+        box-sizing: border-box;
+        
+        /* Tambahkan margin-bottom untuk memberikan jarak setelah konten hero */
+        margin-bottom: 20px; /* Beri sedikit ruang setelah teks hero-content */
+    }
+
+    /* ... kode media query lainnya ... */
+}
     
     .hero-content h1 {
         font-size: 2em;
@@ -210,7 +230,7 @@ header nav ul li a:hover {
     }
 
     /* ... kode media query lainnya ... */
-}
+
 
     /* ... kode media query lainnya ... */
 
