@@ -1,0 +1,438 @@
+/* Styling Umum */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between; /* Menjaga logo di kiri, search di kanan, nav di tengah */
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #000000;
+    border-bottom: 1px solid #000000;
+}
+
+header .logo img {
+    height: 50px;
+    border-radius: 100%;
+}
+
+/* Penyesuaian untuk NAV (Menu Utama) */
+header nav {
+    flex-grow: 1; /* IZINKAN NAV UNTUK MEMANJANG DAN MENGAMBIL RUANG KOSONG */
+    display: flex; /* Aktifkan flexbox di dalam nav */
+    justify-content: center; /* PUSATKAN UL DI DALAM NAV */
+    align-items: center; /* Pusatkan secara vertikal juga */
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Item menu berbaris horizontal */
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #ff6600;
+    transition: color 0.3s ease;
+}
+
+/* Bilah Pencarian */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar form {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    padding: 8px 12px;
+    font-size: 1em;
+    width: 180px; /* Lebar default untuk desktop */
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #856969;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #e65c00;
+}
+
+/* Hamburger menu (tersembunyi secara default di desktop) */
+.hamburger {
+    display: none; /* Pastikan ini disembunyikan di desktop */
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* --- Media Queries for Responsive Design (tetap sama) --- */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        align-items: flex-start; /* Untuk kasus wrapping */
+    }
+
+    header .logo {
+        order: 1;
+    }
+
+    .hamburger {
+        display: block;
+        order: 1;
+        margin-left: auto;
+        padding: 0 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        order: 2;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    header nav { /* Penting: Override flex-grow untuk mobile */
+        flex-grow: 0; /* Nav tidak perlu memanjang di mobile saat tersembunyi */
+        width: 100%;
+        order: 3;
+        padding: 10px 0;
+        background-color: #000;
+        justify-content: center; /* Tetap pusatkan konten nav di mobile */
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+}
+
+/* --- Bagian Lainnya (Tidak Berubah) --- */
+/* Hero Section */
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    /* Hapus padding-top dari sini (global), jika belum dihapus */
+}
+
+.hero-section img {
+    width: 100%;
+    height: 500px; /* Tinggi tetap untuk desktop */
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.hero-content {
+    position: absolute; /* Tetap absolute untuk desktop */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    z-index: 1;
+}
+/* --- Media Queries for Responsive Design --- */
+@media (max-width: 768px) {
+    /* ... kode header mobile Anda yang sudah rapi ... */
+
+    /* Perbaikan untuk Hero Section dan Hero Content di Mobile */
+    .hero-section {
+        padding-top: 150px; /* Ini sudah bagus untuk mendorong konten di bawah header */
+        padding-bottom: 30px; /* Tambahkan padding bawah */
+        
+        /* PENTING: HAPUS TINGGI TETAP 500PX UNTUK MOBILE */
+        height: auto; /* Biarkan tingginya menyesuaikan konten */
+        min-height: 400px; /* Beri tinggi minimum agar gambar tidak terlalu kecil jika konten sedikit */
+        display: flex; /* Gunakan flexbox untuk mengelola item di dalamnya */
+        flex-direction: column; /* Susun item secara vertikal */
+        justify-content: flex-start; /* Mulai konten dari atas setelah padding-top */
+    }
+
+    .hero-section img {
+        /* PENTING: JANGAN BIARKAN GAMBAR MEMAKSA TINGGI SECTION */
+        position: absolute; /* Jadikan gambar absolut untuk memenuhi section */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Buat gambar memenuhi tinggi hero-section */
+        object-fit: cover; /* Pastikan gambar tetap menutupi area tanpa terdistorsi */
+        filter: brightness(50%); /* Pertahankan efek gelap */
+        z-index: -1; /* Posisikan di belakang konten */
+    }
+
+
+    .hero-content {
+        position: static; /* Biarkan static untuk alur dokumen normal */
+        width: 100%; /* Mengambil lebar penuh container */
+        transform: none; /* Hapus transform karena tidak lagi absolute */
+        top: auto;
+        left: auto;
+        padding: 0 5%; /* Padding horizontal untuk teks */
+        box-sizing: border-box;
+        
+        /* Tambahkan margin-bottom untuk memberikan jarak setelah konten hero */
+        margin-bottom: 20px; /* Beri sedikit ruang setelah teks hero-content */
+    }
+
+    /* ... kode media query lainnya ... */
+}
+    
+    .hero-content h1 {
+        font-size: 2em;
+        margin-bottom: 10px; /* Jarak bawah judul */
+    }
+
+    .hero-content p {
+        font-size: 1em;
+        margin-bottom: 20px; /* Jarak bawah paragraf */
+    }
+
+    .hero-content .cta-button {
+        margin-top: 10px; /* Jarak atas tombol */
+    }
+
+    /* ... kode media query lainnya ... */
+
+
+    /* ... kode media query lainnya ... */
+
+
+.cta-button {
+    display: inline-block;
+    background-color: #856969; /* Warna tombol */
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #e65c00;
+}
+
+/* Bagian Keunggulan */
+.advantage-item {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+/* Kategori Produk */
+.product-categories-section {
+    padding: 50px 5%;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.category-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.category-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.category-item h3 {
+    margin: 10px 0;
+}
+
+.category-item p {
+    flex-grow: 1;
+    padding: 0 15px;
+}
+
+.lihat-produk-btn {
+    display: inline-block;
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+}
+
+.lihat-produk-btn:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+.final-cta-section {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 50px 5%;
+}
+
+/* Footer */
+footer section {
+    padding: 20px 2%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+footer section h2 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+footer section ol {
+    list-style-position: inside;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+footer section p {
+    max-width: 800px;
+    margin: 0 auto 10px;
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .footer-links,
+footer .contact-info,
+footer .social-media {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+footer .footer-links p {
+    margin-bottom: 5px;
+}
+
+footer .footer-links p a {
+    display: inline-block;
+    padding: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer .social-media img {
+    height: 30px;
+    width: 30px;
+    margin: 0 10px;
+    filter: invert(100%);
+}
+
+.copyright {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Media Query untuk Desktop (layar lebih besar dari 768px) */
+@media (min-width: 769px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer section {
+        margin-bottom: 30px;
+    }
+
+    footer .footer-links,
+    footer .contact-info,
+    footer .social-media {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    footer .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    footer .footer-links p {
+        margin-bottom: 0;
+    }
+
+    footer .footer-links p a {
+        padding: 0;
+    }
+}
