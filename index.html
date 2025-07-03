@@ -139,10 +139,15 @@
     </footer>
 
     <script>
-  function toggleMenu() {
-    const menu = document.getElementById("menuList");
-    menu.classList.toggle("active");
-  }
+   function toggleMenu() {
+        const menu = document.getElementById("menuList");
+        // Tambahkan pengecekan ini untuk keamanan, meskipun seharusnya tidak error jika ID benar
+        if (menu) {
+            menu.classList.toggle("active");
+        } else {
+            console.error("Kesalahan: Elemen dengan ID 'menuList' tidak ditemukan.");
+        }
+    }
 </script>
 
     
