@@ -13,7 +13,7 @@ body {
 /* Header */
 header {
     display: flex;
-    justify-content: space-between; /* Menjaga logo di kiri, search di kanan, nav di tengah */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
     background-color: #000000;
@@ -72,7 +72,7 @@ header nav ul li a:hover {
     border: none;
     padding: 8px 12px;
     font-size: 1em;
-    width: 180px; /* Lebar default untuk desktop */
+    width: 180px;
     outline: none;
 }
 
@@ -98,159 +98,61 @@ header nav ul li a:hover {
     color: white;
 }
 
-/* --- Media Queries for Responsive Design (tetap sama) --- */
-@media (max-width: 768px) {
-    header {
-        flex-wrap: wrap;
-        align-items: flex-start; /* Untuk kasus wrapping */
-    }
-
-    header .logo {
-        order: 1;
-    }
-
-    .hamburger {
-        display: block;
-        order: 1;
-        margin-left: auto;
-        padding: 0 10px;
-    }
-
-    .search-bar {
-        width: 100%;
-        order: 2;
-        margin-top: 10px;
-        justify-content: center;
-    }
-
-    header nav { /* Penting: Override flex-grow untuk mobile */
-        flex-grow: 0; /* Nav tidak perlu memanjang di mobile saat tersembunyi */
-        width: 100%;
-        order: 3;
-        padding: 10px 0;
-        background-color: #000;
-        justify-content: center; /* Tetap pusatkan konten nav di mobile */
-    }
-
-    header nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-}
-
-/* --- Bagian Lainnya (Tidak Berubah) --- */
-/* Hero Section */
+/* --- Hero Section (DIREVISI UNTUK GAMBAR LATAR BERBEDA) --- */
 .hero-section {
-    position: relative;
+    position: relative; /* Penting untuk positioning absolute di dalamnya */
     text-align: center;
     color: rgb(255, 255, 255);
-    /* Hapus padding-top dari sini (global), jika belum dihapus */
+    height: 500px; /* Tinggi tetap untuk desktop agar ada space */
+    
+    /* Gunakan flexbox untuk memusatkan hero-content di desktop */
+    display: flex;
+    justify-content: center; /* Pusatkan horizontal */
+    align-items: center;   /* Pusatkan vertikal */
+    overflow: hidden; /* Pastikan tidak ada yang keluar */
+    padding: 0; /* Pastikan tidak ada padding tambahan yang menyebabkan gap */
 }
 
-.hero-section img {
+.hero-section::before {
+    content: ''; /* Wajib untuk pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px; /* Tinggi tetap untuk desktop */
-    object-fit: cover;
-    filter: brightness(50%);
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(50%); /* Efek gelap */
+    z-index: -1; /* Tempatkan di belakang konten */
 }
+
+/* ATUR GAMBAR BACKGROUND UNTUK MASING-MASING HALAMAN */
+.hero-home::before {
+    background-image: url('jars.JPG'); /* Gambar untuk index.html */
+}
+
+.hero-velg::before {
+    background-image: url('velg1.jpeg'); /* Gambar untuk velg.html */
+}
+
+/* Sembunyikan tag <img> di HTML karena kita pakai ::before */
+.hero-section img {
+    display: none;
+}
+
 
 .hero-content {
-    position: absolute; /* Tetap absolute untuk desktop */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* Tetap relatif agar konten berada di atas gambar latar */
     width: 80%;
     max-width: 800px;
-    z-index: 1;
-}
-/* --- Media Queries for Responsive Design --- */
-@media (max-width: 768px) {
-    /* ... kode header mobile Anda yang sudah rapi ... */
-
-    /* Perbaikan untuk Hero Section dan Hero Content di Mobile */
-    .hero-section {
-        padding-top: 150px; /* Ini sudah bagus untuk mendorong konten di bawah header */
-        padding-bottom: 30px; /* Tambahkan padding bawah */
-        
-        /* PENTING: HAPUS TINGGI TETAP 500PX UNTUK MOBILE */
-        height: auto; /* Biarkan tingginya menyesuaikan konten */
-        min-height: 400px; /* Beri tinggi minimum agar gambar tidak terlalu kecil jika konten sedikit */
-        display: flex; /* Gunakan flexbox untuk mengelola item di dalamnya */
-        flex-direction: column; /* Susun item secara vertikal */
-        justify-content: flex-start; /* Mulai konten dari atas setelah padding-top */
-    }
-
-    .hero-section img {
-        /* PENTING: JANGAN BIARKAN GAMBAR MEMAKSA TINGGI SECTION */
-        position: absolute; /* Jadikan gambar absolut untuk memenuhi section */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; /* Buat gambar memenuhi tinggi hero-section */
-        object-fit: cover; /* Pastikan gambar tetap menutupi area tanpa terdistorsi */
-        filter: brightness(50%); /* Pertahankan efek gelap */
-        z-index: -1; /* Posisikan di belakang konten */
-    }
-
-
-    .hero-content {
-        position: static; /* Biarkan static untuk alur dokumen normal */
-        width: 100%; /* Mengambil lebar penuh container */
-        transform: none; /* Hapus transform karena tidak lagi absolute */
-        top: auto;
-        left: auto;
-        padding: 0 5%; /* Padding horizontal untuk teks */
-        box-sizing: border-box;
-        
-        /* Tambahkan margin-bottom untuk memberikan jarak setelah konten hero */
-        margin-bottom: 20px; /* Beri sedikit ruang setelah teks hero-content */
-    }
-
-    /* ... kode media query lainnya ... */
-}
-    
-    .hero-content h1 {
-        font-size: 2em;
-        margin-bottom: 10px; /* Jarak bawah judul */
-    }
-
-    .hero-content p {
-        font-size: 1em;
-        margin-bottom: 20px; /* Jarak bawah paragraf */
-    }
-
-    .hero-content .cta-button {
-        margin-top: 10px; /* Jarak atas tombol */
-    }
-
-    /* ... kode media query lainnya ... */
-
-
-    /* ... kode media query lainnya ... */
-
-
-.cta-button {
-    display: inline-block;
-    background-color: #856969;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    z-index: 1; /* Pastikan di atas gambar */
+    padding: 0; /* Hapus padding yang mungkin ada di sini */
+    margin: 0; /* Hapus margin yang mungkin ada di sini */
 }
 
-.cta-button:hover {
-    background-color: #e65c00;
-}
 
-/* Bagian Keunggulan */
+/* --- Bagian Keunggulan (Tidak Berubah) --- */
 .advantage-item {
     padding: 20px;
     background-color: #ffffff;
@@ -261,7 +163,7 @@ header nav ul li a:hover {
     max-width: 400px;
 }
 
-/* Kategori Produk */
+/* --- Kategori Produk (Tidak Berubah) --- */
 .product-categories-section {
     padding: 50px 5%;
     text-align: center;
@@ -294,15 +196,6 @@ header nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-.category-item h3 {
-    margin: 10px 0;
-}
-
-.category-item p {
-    flex-grow: 1;
-    padding: 0 15px;
-}
-
 .lihat-produk-btn {
     display: inline-block;
     background-color: #000000;
@@ -327,7 +220,7 @@ header nav ul li a:hover {
     padding: 50px 5%;
 }
 
-/* Footer */
+/* --- Footer (Tidak Berubah) --- */
 footer section {
     padding: 20px 2%;
     background-color: #333;
@@ -403,8 +296,101 @@ footer .social-media img {
     text-align: center;
 }
 
-/* Media Query untuk Desktop (layar lebih besar dari 768px) */
-@media (min-width: 769px) {
+/* --- Media Queries (Revisi untuk Hero Section) --- */
+@media (max-width: 768px) {
+    /* Header mobile */
+    header {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    header .logo {
+        order: 1;
+    }
+
+    .hamburger {
+        display: block;
+        order: 1;
+        margin-left: auto;
+        padding: 0 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        order: 2;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    header nav {
+        flex-grow: 0;
+        width: 100%;
+        order: 3;
+        padding: 10px 0;
+        background-color: #000;
+        justify-content: center;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    /* Hero Section dan Hero Content di Mobile */
+    .hero-section {
+        height: auto; /* Izinkan tinggi section menyesuaikan konten */
+        min-height: 400px; /* Tinggi minimum agar gambar/area tidak terlalu kecil */
+        padding-top: 150px; /* Sesuaikan nilai ini untuk memberi ruang di bawah header mobile */
+        padding-bottom: 50px; /* Tambah padding bawah agar konten tidak menempel */
+        
+        justify-content: flex-start; /* Konten dimulai dari atas setelah padding-top */
+        align-items: center; /* Pusatkan secara horizontal di dalam padding */
+        flex-direction: column; /* Pastikan konten tertumpuk vertikal */
+    }
+
+    /* ::before sudah diatur di global, tidak perlu diubah di sini */
+    /* .hero-section::before { ... } */
+
+    .hero-content {
+        position: static; /* Buat konten mengalir normal di dalam hero-section */
+        width: 100%; /* Ambil lebar penuh container */
+        transform: none; /* Hapus semua transform */
+        top: auto; /* Hapus properti top */
+        left: auto; /* Hapus properti left */
+        padding: 0 5%; /* Padding horizontal untuk konten teks */
+        box-sizing: border-box;
+    }
+    
+    .hero-content h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .hero-content .cta-button {
+        margin-top: 10px;
+    }
+
+    /* Kategori Produk Mobile */
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .advantage-item {
+        flex-basis: 48%;
+    }
+
+    /* Footer Mobile */
     footer {
         flex-direction: column;
         align-items: center;
