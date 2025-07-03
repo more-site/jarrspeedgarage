@@ -8,16 +8,21 @@ body {
     margin: 0;
     padding: 0;
     color: #000000;
+    overflow-x: hidden; /* Mencegah scroll horizontal saat menu off-canvas keluar */
 }
 
 /* Header */
 header {
     display: flex;
-    justify-content: space-between; /* Menjaga logo di kiri, search di kanan, nav di tengah */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
     background-color: #000000;
     border-bottom: 1px solid #000000;
+    position: fixed; /* Jadikan header fixed agar tetap terlihat saat scroll */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Pastikan header di atas konten lain */
 }
 
 header .logo img {
@@ -91,18 +96,39 @@ header nav ul li a:hover {
 }
 
 /* Hamburger menu (tersembunyi secara default di desktop) */
+/* Hamburger menu (Disembunyikan di desktop, ditunjukkan di mobile) */
 .hamburger {
-    display: none; /* Pastikan ini disembunyikan di desktop */
+    display: none;
     font-size: 30px;
     cursor: pointer;
     color: white;
+    z-index: 1001; /* Pastikan hamburger di atas menu off-canvas saat terbuka */
 }
 
-/* --- Media Queries for Responsive Design (tetap sama) --- */
+/* Overlay (Latar Belakang Gelap Saat Menu Terbuka) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Warna hitam semi-transparan */
+    z-index: 999; /* Di bawah menu, di atas konten */
+    display: none; /* Sembunyikan secara default */
+}
+
+.overlay.active {
+    display: block; /* Tampilkan saat menu aktif */
+}
+
+/* --- Media Queries for Responsive Design --- */
 @media (max-width: 768px) {
+    /* Header mobile */
     header {
         flex-wrap: wrap;
-        align-items: flex-start; /* Untuk kasus wrapping */
+        align-items: flex-start;
+        height: auto; /* Biarkan tinggi header menyesuaikan konten */
+        padding-bottom: 10px; /* Sedikit padding bawah untuk header */
     }
 
     header .logo {
@@ -110,7 +136,7 @@ header nav ul li a:hover {
     }
 
     .hamburger {
-        display: block;
+        display: block; /* Tampilkan Hamburger di Mobile */
         order: 1;
         margin-left: auto;
         padding: 0 10px;
@@ -121,22 +147,57 @@ header nav ul li a:hover {
         order: 2;
         margin-top: 10px;
         justify-content: center;
+        background-color: white; /* Pastikan background search bar terlihat jelas */
+        border-radius: 5px;
     }
 
-    header nav { /* Penting: Override flex-grow untuk mobile */
-        flex-grow: 0; /* Nav tidak perlu memanjang di mobile saat tersembunyi */
-        width: 100%;
-        order: 3;
-        padding: 10px 0;
-        background-color: #000;
-        justify-content: center; /* Tetap pusatkan konten nav di mobile */
+    /* Penyesuaian untuk NAV (Menu Utama) - OFF-CANVAS MENU */
+    header nav { /* Ini adalah container nav */
+        position: fixed; /* Penting untuk off-canvas */
+        top: 0; /* Mulai dari atas */
+        left: -100%; /* Sembunyikan di luar layar kiri */
+        width: 250px; /* Lebar menu off-canvas */
+        height: 100%; /* Tinggi penuh layar */
+        background-color: #222; /* Warna latar belakang menu (lebih gelap) */
+        padding-top: 80px; /* Padding dari atas agar tidak tumpang tindih dengan header */
+        transition: left 0.3s ease-in-out; /* Animasi pergeseran */
+        z-index: 1000; /* Pastikan di atas overlay */
+        flex-grow: 0; /* Nonaktifkan flex-grow di sini */
+        display: flex; /* Aktifkan flexbox untuk menata ul di dalamnya */
+        flex-direction: column; /* Item menu vertikal */
+        align-items: flex-start; /* Sejajarkan teks ke kiri */
+        box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Bayangan menu */
     }
 
-    header nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
+    header nav.active { /* Saat kelas 'active' ditambahkan */
+        left: 0; /* Geser menu masuk ke layar */
+    }
+
+    header nav ul { /* Item-item di dalam menu */
+        list-style: none;
+        margin: 0;
+        padding: 0; /* Hapus padding default ul */
+        width: 100%; /* Agar item menu mengisi lebar nav */
+        flex-direction: column; /* Pastikan item menu vertikal */
+        display: flex; /* Penting untuk menampilkan daftar */
+        text-align: left; /* Teks rata kiri */
+    }
+
+     header nav ul li {
+        margin: 0; /* Hapus margin default li */
+        padding: 15px 20px; /* Padding untuk setiap item menu */
+        width: 100%; /* Setiap item menu mengambil lebar penuh */
+        border-bottom: 1px solid #444; /* Garis pemisah antar item */
+    }
+
+    header nav ul li a {
+        color: #fff; /* Warna teks menu putih */
+        text-decoration: none;
+        display: block; /* Agar seluruh area li bisa diklik */
+    }
+
+     header nav ul li a:hover {
+        background-color: #444; /* Efek hover pada item menu */
     }
 
     nav ul.active {
@@ -175,16 +236,16 @@ header nav ul li a:hover {
 
     /* Perbaikan untuk Hero Section dan Hero Content di Mobile */
     .hero-section {
-        padding-top: 150px; /* Ini sudah bagus untuk mendorong konten di bawah header */
-        padding-bottom: 30px; /* Tambahkan padding bawah */
-        
-        /* PENTING: HAPUS TINGGI TETAP 500PX UNTUK MOBILE */
-        height: auto; /* Biarkan tingginya menyesuaikan konten */
-        min-height: 400px; /* Beri tinggi minimum agar gambar tidak terlalu kecil jika konten sedikit */
-        display: flex; /* Gunakan flexbox untuk mengelola item di dalamnya */
-        flex-direction: column; /* Susun item secara vertikal */
-        justify-content: flex-start; /* Mulai konten dari atas setelah padding-top */
+        margin-top: 150px; /* Tambahkan margin-top untuk mendorong konten di bawah header fixed */
+        height: auto;
+        min-height: 400px;
+        padding-bottom: 50px;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
     }
+
+
 
     .hero-section img {
         /* PENTING: JANGAN BIARKAN GAMBAR MEMAKSA TINGGI SECTION */
@@ -200,20 +261,19 @@ header nav ul li a:hover {
 
 
     .hero-content {
-        position: static; /* Biarkan static untuk alur dokumen normal */
-        width: 100%; /* Mengambil lebar penuh container */
-        transform: none; /* Hapus transform karena tidak lagi absolute */
+        position: relative; /* Kembali ke relative agar z-index bekerja dengan baik */
+        width: 100%;
+        transform: none;
         top: auto;
         left: auto;
-        padding: 0 5%; /* Padding horizontal untuk teks */
+        padding: 0 5%;
         box-sizing: border-box;
-        
-        /* Tambahkan margin-bottom untuk memberikan jarak setelah konten hero */
-        margin-bottom: 20px; /* Beri sedikit ruang setelah teks hero-content */
     }
+    /* ... sisa kode CSS lainnya ... */
+}
 
     /* ... kode media query lainnya ... */
-}
+
     
     .hero-content h1 {
         font-size: 2em;
