@@ -148,10 +148,12 @@ header nav ul li a:hover {
 /* Hero Section */
 /* Hero Section */
 /* Hero Section */
+/* Hero Section */
 .hero-section {
     position: relative;
     text-align: center;
     color: rgb(255, 255, 255);
+    /* Di desktop, biarkan menempel, tidak ada padding-top di sini */
 }
 
 .hero-section img {
@@ -163,9 +165,9 @@ header nav ul li a:hover {
 
 .hero-content {
     position: absolute;
-    top: 50%; /* Default: di tengah secara vertikal */
+    top: 50%; /* Default untuk desktop */
     left: 50%;
-    transform: translate(-50%, -50%); /* Default: memusatkan */
+    transform: translate(-50%, -50%); /* Default untuk desktop */
     width: 80%;
     max-width: 800px;
     z-index: 1;
@@ -173,21 +175,38 @@ header nav ul li a:hover {
 
 /* --- Media Queries for Responsive Design --- */
 @media (max-width: 768px) {
-    /* ... kode lainnya di media query ... */
+    /* ... kode header mobile Anda yang sudah rapi ... */
 
-    .hero-content {
-        top: 100px; /* Jarak dari atas (relative to hero-section top) */
-        /* Kita perlu menyesuaikan transform agar tidak lagi memusatkan dari tengah section */
-        transform: translateX(-50%); /* HANYA memusatkan secara horizontal */
-        text-align: center; /* Pastikan teks tetap di tengah */
+    /* **PERBAIKAN UNTUK HERO SECTION DAN HERO CONTENT DI MOBILE** */
+    .hero-section {
+        /* Tambahkan padding-top di sini KHUSUS UNTUK MOBILE */
+        /* Sesuaikan nilai ini hingga cukup di bawah header. Mulai dengan 150px, bisa lebih. */
+        padding-top: 150px;
+        padding-bottom: 30px; /* Tambahkan padding bawah agar konten tidak terlalu menempel ke bawah */
     }
 
+    .hero-content {
+        position: static; /* Ubah menjadi static agar tidak diposisikan absolut */
+        width: 100%; /* Pastikan mengambil lebar penuh container */
+        transform: none; /* Hapus transform karena tidak lagi absolute */
+        top: auto; /* Hapus properti top */
+        left: auto; /* Hapus properti left */
+        padding: 0 5%; /* Tambahkan padding horizontal agar tidak terlalu mepet tepi */
+        box-sizing: border-box; /* Pastikan padding masuk dalam perhitungan lebar */
+    }
+    
     .hero-content h1 {
         font-size: 2em;
+        margin-bottom: 10px; /* Jarak bawah judul */
     }
 
     .hero-content p {
         font-size: 1em;
+        margin-bottom: 20px; /* Jarak bawah paragraf */
+    }
+
+    .hero-content .cta-button {
+        margin-top: 10px; /* Jarak atas tombol */
     }
 
     /* ... kode media query lainnya ... */
