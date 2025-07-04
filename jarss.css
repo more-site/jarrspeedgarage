@@ -221,9 +221,11 @@ header nav ul li a:hover {
     margin-top: 30px;
 }
 
-.produk img{
-    width: 50%;
-    height: 100px;
+img.produk {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
 
 }
 
@@ -516,6 +518,12 @@ footer .social-media img {
 
     .hero-content .cta-button {
         margin-top: 10px;
+    }
+
+    img.produk {
+        max-width: 100%;
+        height: auto;
+        margin: 20px auto;
     }
 
     /* Kategori Produk Mobile */
