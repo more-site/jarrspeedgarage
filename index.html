@@ -70,6 +70,11 @@
                 <h3>ARUMI PARTS Eksklusif</h3>
                 <a href="arumi.html" class="lihat-produk-btn">Lihat ARUMI PARTS</a>
             </div>
+            <div class="category-item">
+                <img src="piringan.png" alt="Piringan">
+                <h3>Piringan</h3>
+                <a href="piringan.html" class="lihat-produk-btn">Lihat Piringan</a>
+            </div>
         </div>
     </section>
 
@@ -113,7 +118,7 @@
             <h2>Kontak kami</h2>
             <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank">085169412326</a></p>
             <p>Email: jarrsspeedgarage@gmail.com</p>
-            <p>Jam Operasional: Selasa - Minggu, 10:00 - 21:00 WIB</p>
+            <p>Jam Operasional: Senin - Jumat, 09:00 - 17:00 WIB</p>
         </section>
         <div class="social-media">
             <a href="LINK_FACEBOOK"><img src="https://img.icons8.com/?size=100&id=13912&format=png&color=000000" alt="Facebook"></a>
@@ -122,41 +127,69 @@
         <p class="copyright">&copy; 2025 JarrsspeedGarage. Semua Hak Dilindungi.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menu = document.getElementById("menuList");
-            const hamburger = document.querySelector(".hamburger");
-            const overlay = document.querySelector(".overlay");
-            const nav = document.querySelector("header nav");
-            const menuLinks = document.querySelectorAll("#menuList a"); // Pilih semua link di dalam menu
+     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.getElementById("menuList");
+        const hamburger = document.querySelector(".hamburger");
+        const overlay = document.querySelector(".overlay");
+        const nav = document.querySelector("header nav");
+        const menuLinks = document.querySelectorAll("#menuList a");
 
-            function toggleMenu() {
-                if (menu && overlay && nav) {
-                    menu.classList.toggle("active");
-                    overlay.classList.toggle("active");
-                    nav.classList.toggle("active");
-                } else {
-                    console.error("Elemen menuList, hamburger, overlay, atau nav tidak ditemukan.");
+        function toggleMenu() {
+            if (menu && overlay && nav) {
+                menu.classList.toggle("active");
+                overlay.classList.toggle("active");
+                nav.classList.toggle("active");
+            } else {
+                console.error("Elemen menuList, hamburger, overlay, atau nav tidak ditemukan.");
+            }
+        }
+
+        if (hamburger) {
+            hamburger.addEventListener('click', toggleMenu);
+        }
+        if (overlay) {
+            overlay.addEventListener('click', toggleMenu);
+        }
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menu.classList.contains('active')) {
+                    toggleMenu();
                 }
-            }
-
-            if (hamburger) {
-                hamburger.addEventListener('click', toggleMenu);
-            }
-            if (overlay) {
-                overlay.addEventListener('click', toggleMenu);
-            }
-
-            // TUTUP MENU SAAT LINK DIKLIK
-            menuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (menu.classList.contains('active')) { // Hanya tutup jika menu sedang aktif
-                        toggleMenu();
-                    }
-                });
             });
         });
-    </script>
 
+        // ----- Kode Search Bar (Pastikan ini juga ada di index.html) -----
+        const searchInput = document.getElementById("searchInput");
+        const searchForm = document.getElementById("searchForm");
+        const productItems = document.querySelectorAll(".category-item");
+
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            productItems.forEach(item => {
+                const productName = item.querySelector("h3").textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                filterProducts();
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('keyup', filterProducts);
+        }
+        // --- Akhir Kode Search Bar ---
+    });
+</script>
 </body>
 </html>
