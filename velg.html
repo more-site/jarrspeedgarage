@@ -278,7 +278,7 @@
 
     <section class="final-cta-section">
         <div class="content-container">
-            <h2>Ingin Konsultasi Velg yang Cocok?</h2>
+            <h2>Ingin Konsultasi Ban yang Cocok?</h2>
             <a href="https://wa.me/6285169412326" class="cta-button" target="_blank" rel="noopener noreferrer">Hubungi Kami Sekarang</a>
         </div>
     </section>
@@ -296,8 +296,7 @@
                 </ul>
             </div>
 
-            <section id="kontak-velg" class="footer-column contact-info">
-                <h3>Kontak Kami</h3>
+            <section id="kontak-ban" class="footer-column contact-info"> <h3>Kontak Kami</h3> 
                 <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank" rel="noopener noreferrer">085169412326</a></p>
                 <p>Email: <a href="mailto:jarrsspeedgarage@gmail.com">jarrsspeedgarage@gmail.com</a></p>
                 <p>Jam Operasional: Selasa - Minggu, 09:00 - 21:00 WIB</p>
@@ -316,6 +315,113 @@
         <p class="copyright">&copy; <span id="currentYear"></span> JarrsspeedGarage. Semua Hak Dilindungi.</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.getElementById("menuList");
+        const hamburger = document.querySelector(".hamburger");
+        const overlay = document.querySelector(".overlay");
+        const mainNav = document.querySelector(".main-nav"); // Ubah dari 'header nav' menjadi '.main-nav'
+        const menuLinks = document.querySelectorAll("#menuList a");
+
+        function toggleMenu() {
+            if (menu && overlay && mainNav && hamburger) {
+                menu.classList.toggle("active");
+                overlay.classList.toggle("active");
+                mainNav.classList.toggle("active");
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !isExpanded);
+            } else {
+                console.error("Elemen menuList, hamburger, overlay, atau nav tidak ditemukan.");
+            }
+        }
+
+        if (hamburger) {
+            hamburger.addEventListener('click', toggleMenu);
+        }
+        if (overlay) {
+            overlay.addEventListener('click', toggleMenu);
+        }
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                if (menu.classList.contains('active')) {
+                    setTimeout(() => {
+                        toggleMenu(); // Tutup menu
+                    }, 300); // Sesuaikan delay ini jika perlu (misalnya 0, 100, 300 ms)
+                }
+            });
+        });
+
+        // ----- Kode Search Bar (Pastikan ini juga ada di index.html) -----
+        const searchInput = document.getElementById("searchInput");
+        const searchForm = document.getElementById("searchForm");
+        const productItems = document.querySelectorAll(".category-item"); // Ini akan berfungsi untuk velg.html juga
+
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            productItems.forEach(item => {
+                const productName = item.querySelector("h3") ? item.querySelector("h3").textContent.toLowerCase() : '';
+                if (productName.includes(searchTerm)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        // Menerapkan debounce pada input pencarian
+        const debouncedFilterProducts = debounce(filterProducts, 300); // Tunggu 300ms setelah user berhenti mengetik
+
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah submit form default
+                filterProducts(); // Jalankan pencarian segera saat tombol submit diklik
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('keyup', debouncedFilterProducts);
+        }
+        // --- Akhir Kode Search Bar ---
+
+        // Atur tahun hak cipta secara dinamis
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        } else {
+            console.warn("Elemen dengan ID 'currentYear' tidak ditemukan. Tahun hak cipta tidak dapat diatur secara dinamis.");
+        }
+
+        // --- Image Fade-in on Load ---
+        // Ini perlu mencari class .product-main-image dan .category-item img
+        const allImages = document.querySelectorAll('.category-item img, .product-main-image');
+
+        allImages.forEach(img => {
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                });
+                img.addEventListener('error', () => {
+                    console.error('Failed to load image:', img.src);
+                    img.classList.add('loaded');
+                });
+            }
+        });
+        // --- Akhir Image Fade-in ---
+    });
+
+    // Utility function for debouncing (pindahkan keluar DOMContentLoaded jika ingin diakses global)
+    function debounce(func, delay) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), delay);
+        };
+    }
+    </script>
 </body>
 </html>
