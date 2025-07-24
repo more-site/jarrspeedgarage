@@ -4,331 +4,314 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Shockbreaker Terbaik - JarrsspeedGarage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <link rel="stylesheet" href="jarss.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class="overlay"></div> <header>
+    <div class="overlay" aria-hidden="true"></div> 
+    
+    <header class="main-header">
         <div class="logo">
-            <img src="jars.JPG" alt="Logo JarrsspeedGarage" />
+            <a href="index.html#home" aria-label="Beranda JarrsspeedGarage">
+                <img src="jars.JPG" alt="Logo JarrsspeedGarage" />
+            </a>
         </div>
-        <nav>
+        <nav class="main-nav" aria-label="Navigasi Utama">
             <ul id="menuList">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#produk">Produk</a></li>
-                <li><a href="index.html#cara-order">Cara Order</a></li>
-                <li><a href="index.html#tentang-kami">Tentang Kami</a></li>
-                <li><a href="index.html#kontak">Kontak</a></li>
+                <li><a href="index.html#home" target="_self">Beranda</a></li>
+                <li><a href="index.html#produk" target="_self">Produk</a></li>
+                <li><a href="index.html#cara-order" target="_self">Cara Order</a></li>
+                <li><a href="index.html#tentang-kami" target="_self">Tentang Kami</a></li>
+                <li><a href="index.html#kontak" target="_self">Kontak</a></li>
             </ul>
         </nav>
-        <div class="hamburger">&#9776;</div> <div class="search-bar">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Cari produk..." name="q" />
-                <button type="submit">Cari</button>
+        <button class="hamburger" aria-expanded="false" aria-controls="menuList" aria-label="Buka menu navigasi">&#9776;</button>
+        <div class="search-bar" role="search">
+            <form id="searchForm" action="#" method="GET">
+                <label for="searchInput" class="sr-only">Cari produk</label>
+                <input type="text" id="searchInput" placeholder="Cari produk..." name="q" aria-label="Kolom pencarian produk" />
+                <button type="submit" aria-label="Cari"><span class="sr-only">Cari</span><i data-feather="search"></i></button>
             </form>
         </div>
     </header>
 
-    <section class="hero-section hero-home">
-        <div class="hero-content">
-        <h1>SHOCKBREAKER LENGKAP!</h1>
-        <p>Tersedia berbagai macam variasi, warna, dan gaya. dari berbagai Brand!</p>
-        <h1>VND - YSS - DBS - KTC - GROZA - KYTA </h1>
-    </div>
-    </section>
+    <main>
+        <section class="hero-section hero-shock"> <div class="content-container hero-content">
+                <h1><span class="highlight-title">SHOCKBREAKER</span> LENGKAP!</h1>
+                <p>Tersedia berbagai macam variasi, warna, dan gaya. dari berbagai Brand!</p>
+                <p class="brand-list">VND - YSS - DBS - KTC - GROZA - KYTA</p> </div>
+        </section>
 
-    <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="shockb.jpeg" alt="Shockbreaker VND" class="produk">
-        <h1>Shockbreaker VND</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya :<br>Tabung Bawah <br>Non Tabung <br>Double Tabung <br>1 Tabung </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="vndtbawah.jpeg" alt="shockbreaker VND tabung bawah" />
-                <h3>VND Tabung Bawah</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+        <section id="shock-vnd" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">VND</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya :<br>Tabung Bawah <br>Non Tabung <br>Double Tabung <br>1 Tabung </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</p>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3> <div class="category-grid">
+                    <div class="category-item">
+                        <img src="vndtbawah.jpeg" alt="Shockbreaker VND tabung bawah" loading="lazy"/>
+                        <h4>VND Tabung Bawah</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Vndntabung.jpeg" alt="Shockbreaker VND non tabung" loading="lazy"/>
+                        <h4>VND Non Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Non%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Vnddtabung.jpeg" alt="Shockbreaker VND Double Tabung" loading="lazy"/>
+                        <h4>VND Double Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Vnd1tabung.jpeg" alt="Shockbreaker VND 1 tabung" loading="lazy"/>
+                        <h4>VND 1 Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="Vndntabung.jpeg" alt="shockbreaker VND non tabung" />
-                <h3>VND Non Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Non%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="shock-yss" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">YSS</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya :<br>Tabung Bawah <br>Double Tabung <br>1 Tabung </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</P>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="Yss1tabung.jpeg" alt="Shockbreaker YSS 1 tabung" loading="lazy"/>
+                        <h4>YSS 1 Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="yssdtabung.jpeg" alt="Shockbreaker YSS double tabung" loading="lazy"/>
+                        <h4>YSS Double Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="ShockYSS.jpeg" alt="Shockbreaker YSS tabung bawah" loading="lazy"/>
+                        <h4>YSS Tabung Bawah</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="Vnddtabung.jpeg" alt="shockbreaker VND Double Tabung" />
-                <h3>VND Double Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="shock-dbs" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">DBS</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>1 Tabung </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</p>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="Dbsdtabung.jpeg" alt="Shockbreaker DBS double tabung" loading="lazy"/>
+                        <h4>DBS Double Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20DBS%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Dbs1tabung.jpeg" alt="Shockbreaker DBS 1 tabung" loading="lazy"/>
+                        <h4>DBS 1 Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20DBS%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="Vnd1tabung.jpeg" alt="shockbreaker VND 1 tabung" />
-                <h3>VND 1 Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20VND%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="shock-ktc" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">KTC</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>1 Tabung </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</p>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="ktc1tabung.jpeg" alt="Shockbreaker KTC 1 tabung" loading="lazy"/>
+                        <h4>KTC 1 Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KTC%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Ktcdtabung.jpeg" alt="Shockbreaker KTC double tabung" loading="lazy"/>
+                        <h4>KTC Double Tabung </h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KTC%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="shock-groza" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">GROZA</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>Double Tabung Bawah </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</p>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="Grozadtatas.jpeg" alt="Shockbreaker GROZA double tabung" loading="lazy"/>
+                        <h4>GROZA Double Tabung</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20GROZA%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Grozadtbawah.jpeg" alt="Shockbreaker GROZA double tabung bawah" loading="lazy"/>
+                        <h4>GROZA Double Tabung Bawah</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20GROZA%20Double%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="shock-kyta" class="product-brand-section">
+            <div class="content-container">
+                <h2>Shockbreaker <span class="highlight-title">KYTA</span></h2> <div class="product-detail-block">
+                    <div class="product-description">
+                        <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>Non Tabung </p>
+                        <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
+                        <p>Konfirmasi pilihan warna melalui chat!</p>
+                        <p>HAPPY SHOOPING CEESS!!!</p>
+                    </div>
+                </div>
+                
+                <h3>Berbagai pilihan jenis Shockbreaker</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="Kytadtabung.jpeg" alt="Shockbreaker KYTA double tabung A" loading="lazy"/>
+                        <h4>KYTA Double Tabung A</h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Double%20Tabung%20A%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Kytadt.jpeg" alt="Shockbreaker KYTA double tabung" loading="lazy"/>
+                        <h4>KYTA Double Tabung </h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="Kytant.jpeg" alt="Shockbreaker KYTA non tabung" loading="lazy"/>
+                        <h4>KYTA Non Tabung </h4>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Non%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="final-cta-section">
+        <div class="content-container">
+            <h2>Ingin Konsultasi Shockbreaker yang Cocok?</h2>
+            <a href="https://wa.me/6285169412326" class="cta-button" target="_blank" rel="noopener noreferrer">Hubungi Kami Sekarang</a>
         </div>
     </section>
-    <hr style="border: 1px solid #ccc; margin: 20px 0;">
 
-    <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="ShockYSS.jpeg" alt="Shockbreaker YSS" class="produk">
-        <h1>Shockbreaker YSS</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya :<br>Tabung Bawah <br>Double Tabung <br>1 Tabung </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="Yss1tabung.jpeg" alt="shockbreaker YSS 1 tabung" />
-                <h3>YSS 1 Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+    <footer class="main-footer">
+        <div class="footer-content-wrapper">
+            <div class="footer-column footer-links">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="index.html#produk" target="_self">Produk</a></li>
+                    <li><a href="index.html#cara-order" target="_self">Cara Order</a></li>
+                    <li><a href="index.html#tentang-kami" target="_self">Tentang Kami</a></li>
+                    <li><a href="index.html#kebijakan-privasi" target="_self">Kebijakan Privasi</a></li>
+                    <li><a href="index.html#kontak" target="_self">Kontak</a></li>
+                </ul>
             </div>
-            <div class="category-item">
-                <img src="yssdtabung.jpeg" alt="shockbreaker YSS double tabung" />
-                <h3>YSS Double Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
+
+            <section id="kontak-shock" class="footer-column contact-info"> <h3>Kontak Kami</h3> 
+                <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank" rel="noopener noreferrer">085169412326</a></p>
+                <p>Email: <a href="mailto:jarrsspeedgarage@gmail.com">jarrsspeedgarage@gmail.com</a></p>
+                <p>Jam Operasional: Selasa - Minggu, 09:00 - 21:00 WIB</p>
+            </section>
+
+            <div class="footer-column social-media">
+                <h3>Ikuti Kami</h3>
+                <a href="LINK_FACEBOOK" target="_blank" rel="noopener noreferrer" aria-label="Facebook JarrsSpeedGarage">
+                    <i data-feather="facebook"></i>
                 </a>
-            </div>
-            <div class="category-item">
-                <img src="ShockYSS.jpeg" alt="shockbreaker YSS tabung bawah" />
-                <h3>YSS Tabung Bawah</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20YSS%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
+                <a href="LINK_INSTAGRAM" target="_blank" rel="noopener noreferrer" aria-label="Instagram JarrsSpeedGarage">
+                    <i data-feather="instagram"></i>
                 </a>
             </div>
         </div>
-    </section>
-    <hr style="border: 1px solid #ccc; margin: 20px 0;">
-
-    <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="Shockdbs.png" alt="Shockbreaker DBS" class="produk">
-        <h1>Shockbreaker DBS</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>1 Tabung </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="Dbsdtabung.jpeg" alt="shockbreaker DBS double tabung" />
-                <h3>DBS Double Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20DBS%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="Dbs1tabung.jpeg" alt="shockbreaker DBS 1 tabung" />
-                <h3>DBS 1 Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20DBS%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-    <hr style="border: 1px solid #ccc; margin: 20px 0;">
-
-    <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="shockktc.png" alt="Shockbreaker KTC" class="produk">
-        <h1>Shockbreaker KTC</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>1 Tabung </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="ktc1tabung.jpeg" alt="shockbreaker KTC 1 tabung" />
-                <h3>KTC 1 Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KTC%201%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="Ktcdtabung.jpeg" alt="shockbreaker KTC double tabung" />
-                <h3>KTC Double Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KTC%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-     <hr style="border: 1px solid #ccc; margin: 20px 0;">
-
-     <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="shockgroza.png" alt="Shockbreaker GROZA" class="produk">
-        <h1>Shockbreaker GROZA</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>Double Tabung Bawah </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="Grozadtatas.jpeg" alt="shockbreaker GROZA double tabung" />
-                <h3>GROZA Double Tabung</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20GROZA%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="Grozadtbawah.jpeg" alt="shockbreaker GROZA double tabung bawah" />
-                <h3>GROZA Double Tabung Bawah</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20GROZA%20Double%20Tabung%20Bawah%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-    <hr style="border: 1px solid #ccc; margin: 20px 0;">
-
-    <section id="Shockbreaker-produk" class="product-categories-section">
-        <img src="ShockKYTA.png" alt="Shockbreaker KYTA" class="produk">
-        <h1>Shockbreaker KYTA</h1>
-        <p>Deskripsi Produk :</p>
-            <p>Tersedia berbgai shockbreaker diantaranya : <br>Double Tabung <br>Non Tabung </p>
-            <p>Untuk segala jenis motor info lebih lanjut bisa hubugi Whatsapp di bagian kontak di bawah</p>
-            <P>Konfirmasi pilihan warna melalui chat!</P>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan jenis Shockbreaker</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="Kytadtabung.jpeg" alt="shockbreaker KYTA double tabung A" />
-                <h3>KYTA Double Tabung A</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Double%20Tabung%20A%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="Kytadt.jpeg" alt="shockbreaker KYTA double tabung" />
-                <h3>KYTA Double Tabung </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Double%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="Kytant.jpeg" alt="shockbreaker KYTA non tabung" />
-                <h3>KYTA Non Tabung </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Shockbreaker%20KYTA%20Non%20Tabung%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-
-     <section class="final-cta-section">
-        <h2>Ingin Konsultasi Shockbreaker yang Cocok?</h2>
-        <a href="https://wa.me/6285169412326" class="cta-button" target="_blank">Hubungi Kami Sekarang</a>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <p><a href="index.html#produk">Produk</a></p>
-            <p><a href="index.html#cara-order">Cara Order</a></p>
-            <p><a href="index.html#tentang-kami">Tentang Kami</a></p>
-            <p><a href="index.html#kontak">Kontak</a></p>
-            <p><a href="index.html#kebijakan-privasi">Kebijakan Privasi</a></p>
-        </div>
-        <div class="contact-info">
-            <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank">085169412326</a></p>
-            <p>Email: jarrsspeedgarage@gmail.com</p>
-            <p>Jam Operasional: Senin - Jumat, 09:00 - 17:00 WIB</p>
-        </div>
-        <div class="social-media">
-            <a href="LINK_FACEBOOK"><img src="https://img.icons8.com/?size=100&id=13912&format=png&color=000000" alt="Facebook" /></a>
-            <a href="LINK_INSTAGRAM"><img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" /></a>
-        </div>
-        <p class="copyright">&copy; 2025 JarrsspeedGarage. Semua Hak Dilindungi.</p>
+        <p class="copyright">&copy; <span id="currentYear"></span> JarrsspeedGarage. Semua Hak Dilindungi.</p>
     </footer>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menu = document.getElementById("menuList");
-        const hamburger = document.querySelector(".hamburger");
-        const overlay = document.querySelector(".overlay");
-        const nav = document.querySelector("header nav");
-        const menuLinks = document.querySelectorAll("#menuList a");
-
-        function toggleMenu() {
-            if (menu && overlay && nav) {
-                menu.classList.toggle("active");
-                overlay.classList.toggle("active");
-                nav.classList.toggle("active");
-            } else {
-                console.error("Elemen menuList, hamburger, overlay, atau nav tidak ditemukan.");
-            }
-        }
-
-        if (hamburger) {
-            hamburger.addEventListener('click', toggleMenu);
-        }
-        if (overlay) {
-            overlay.addEventListener('click', toggleMenu);
-        }
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (menu.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // ----- Kode Search Bar (Pastikan ini juga ada di index.html) -----
-        const searchInput = document.getElementById("searchInput");
-        const searchForm = document.getElementById("searchForm");
-        const productItems = document.querySelectorAll(".category-item");
-
-        function filterProducts() {
-            const searchTerm = searchInput.value.toLowerCase();
-
-            productItems.forEach(item => {
-                const productName = item.querySelector("h3").textContent.toLowerCase();
-                if (productName.includes(searchTerm)) {
-                    item.style.display = "flex";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        if (searchForm) {
-            searchForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                filterProducts();
-            });
-        }
-
-        if (searchInput) {
-            searchInput.addEventListener('keyup', filterProducts);
-        }
-        // --- Akhir Kode Search Bar ---
-    });
-</script>
+    <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-

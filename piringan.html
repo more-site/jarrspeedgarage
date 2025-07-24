@@ -4,237 +4,196 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Piringan Keren - JarrsspeedGarage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <link rel="stylesheet" href="jarss.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class="overlay"></div> <header>
+    <div class="overlay" aria-hidden="true"></div> 
+    
+    <header class="main-header">
         <div class="logo">
-            <img src="jars.JPG" alt="Logo JarrsspeedGarage" />
+            <a href="index.html#home" aria-label="Beranda JarrsspeedGarage">
+                <img src="jars.JPG" alt="Logo JarrsspeedGarage" />
+            </a>
         </div>
-        <nav>
+        <nav class="main-nav" aria-label="Navigasi Utama">
             <ul id="menuList">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#produk">Produk</a></li>
-                <li><a href="index.html#cara-order">Cara Order</a></li>
-                <li><a href="index.html#tentang-kami">Tentang Kami</a></li>
-                <li><a href="index.html#kontak">Kontak</a></li>
+                <li><a href="index.html#home" target="_self">Beranda</a></li>
+                <li><a href="index.html#produk" target="_self">Produk</a></li>
+                <li><a href="index.html#cara-order" target="_self">Cara Order</a></li>
+                <li><a href="index.html#tentang-kami" target="_self">Tentang Kami</a></li>
+                <li><a href="index.html#kontak" target="_self">Kontak</a></li>
             </ul>
         </nav>
-        <div class="hamburger">&#9776;</div> <div class="search-bar">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Cari produk..." name="q" />
-                <button type="submit">Cari</button>
+        <button class="hamburger" aria-expanded="false" aria-controls="menuList" aria-label="Buka menu navigasi">&#9776;</button>
+        <div class="search-bar" role="search">
+            <form id="searchForm" action="#" method="GET">
+                <label for="searchInput" class="sr-only">Cari produk</label>
+                <input type="text" id="searchInput" placeholder="Cari produk..." name="q" aria-label="Kolom pencarian produk" />
+                <button type="submit" aria-label="Cari"><span class="sr-only">Cari</span><i data-feather="search"></i></button>
             </form>
         </div>
     </header>
 
-    <section class="hero-section hero-home">
-        <div class="hero-content">
-        <h1>PIRINGAN LENGKAP!</h1>
-        <p>Tersedia berbagai macam variasi, warna, dan gaya. dari berbagai Brand!</p>
-        <h1>DELKEVIC - GROZA</h1>
-    </div>
-    </section>
+    <main>
+        <section class="hero-section hero-piringan"> <div class="content-container hero-content">
+                <h1><span class="highlight-title">PIRINGAN</span> LENGKAP!</h1>
+                <p>Tersedia berbagai macam variasi, warna, dan gaya. dari berbagai Brand!</p>
+                <p class="brand-list">DELKEVIC - GROZA</p> </div>
+        </section>
 
+        <section id="piringan-delkevic" class="product-categories-section"> 
+            <div class="content-container">
+                <h2>Piringan <span class="highlight-title">Delkevic</span></h2> <div class="product-description-block"> <p>PICK / FOTO ASLI READY STOK! | DI JAMIN ORIGINAL DELKEVIC | PIRINGAN ORIGINAL DELKEVIC</p>
+                    <p>Tersedia beberapa pilihan warna yang terbaik yang dapat meningkatkan look motor. <br /> pilihan warna: Hitam - Merah - Kuning</p>
+                    <p>Knfirmasi Pilihan warna Melalui Chat!</p>
+                    <p>HAPPY SHOOPING CEESS!!!</p>
+                </div>
+                
+                <h3>Berbagai pilihan Piringan Delkevic</h3> <div class="category-grid">
+                    <div class="category-item">
+                        <img src="piringan-delkevic-fullfloating.jpg" alt="Piringan Delkevic Fullfloating" loading="lazy"/>
+                        <h3>Piringan Delkevic 235mm Full Floating<br />CNC Stylish<br />Honda - Yamaha</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20235mm%20Fullfloating%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
 
-    <section id="piringan-produk" class="product-categories-section">
-        <img src="piringan.png" alt="Piringn Delkevic" class="produk">
-        <h1>Piringan Delkevic</h1>
-        <p>Deskripsi Produk :</p>
-            <p>PICK / FOTO ASLI READY STOK! | DI JAMIN ORIGINAL DELKEVIC | PIRINGAN ORIGINAL DELKEVIC</p>
-            <p>Tersedia beberapa pilihan warna yang terbaik yang dapat meningkatkan look motor. <br> pilihan warna: Hitam - Merah - Kuning</p>
-            <p>Knfirmasi Pilihan warna Melalui Chat!</p>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan Piringan Delkevic</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="piringan-delkevic-fullfloating.jpg" alt="piringan delkevic fullfloating" />
-                <h3>Piringan Delkevic 235mm full floating<br>CNC Stylish<br>Honda - Yamaha</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20235mm%20Fullfloating%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+                    <div class="category-item">
+                        <img src="piringan-delkevic-semifloating.jpg" alt="Piringan Delkevic Semifloating" loading="lazy"/>
+                        <h3>Piringan Delkevic 260mm Semi Floating<br />CNC Stylish <br />Honda - Yamaha</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20260mm%20Semifloating%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-delkeic-abs-allmotor.jpg" alt="Piringan Delkevic ABS All Motor" loading="lazy"/>
+                        <h3>Piringan Delkevic ABS <br />All Motor</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20ABS%20All%20Motor%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
+        </section>
+        
+        <hr class="section-divider">
 
-            <div class="category-item">
-                <img src="piringan-delkevic-semifloating.jpg" alt="piringan delkevic semifloating" />
-                <h3>Piringan Delkevic 260mm semi floating<br>CNC Stylish <br>Honda - Yamaha</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20260mm%20Semifloating%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" >
-                    Order via WhatsApp
-                </a>
+        <section id="piringan-groza" class="product-categories-section"> <div class="content-container">
+                <h2>Piringan <span class="highlight-title">Groza</span></h2> <div class="product-description-block"> <p>PICK / FOTO ASLI READY STOK! | DI JAMIN ORIGINAL GROZA | PIRINGAN ORIGINAL GROZA</p>
+                    <p>Tersedia beberapa pilihan warna yang terbaik yang dapat meningkatkan look motor.</p>
+                    <p>Untuk Piringan Groza Floating dan 260mm, konfirmasi pilihan warna Melalui Chat!</p>
+                    <p>HAPPY SHOOPING CEESS!!!</p>
+                </div>
+                
+                <h3>Berbagai pilihan Piringan Groza</h3>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="piringan-groza-biru.jpg" alt="Piringan Groza Biru All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Biru<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Biru%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-emas.jpg" alt="Piringan Groza Emas All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Emas<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Emas%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-hijau.jpg" alt="Piringan Groza Hijau All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Hijau<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Hijau%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-merah.jpg" alt="Piringan Groza Merah All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Merah<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Merah%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-silver.jpg" alt="Piringan Groza Silver All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Silver<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Silver%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-ungu.jpg" alt="Piringan Groza Ungu All type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Ungu<br />All Type & Ukuran</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Ungu%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-alltype.jpg" alt="Piringan Groza Floating All Type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza Floating<br />All Type & Ukuran <br />Beat - Scoopy - Vario</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Floating%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                    <div class="category-item">
+                        <img src="piringan-groza-size260mm.jpg" alt="Piringan Groza 260mm All Type & Ukuran" loading="lazy"/>
+                        <h3>Piringan Groza 260mm<br />All Type & Ukuran<br />All Motor</h3>
+                        <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Biru%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" rel="noopener noreferrer">
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="piringan-delkeic-abs-allmotor.jpg" alt="piringan delkevic abs all motor" />
-                <h3>Piringan Delkevic ABS <br>All Motor</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Delkevic%20ABS%20All%20Motor%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank" >
-                    Order via WhatsApp
-                </a>
+        </section>
+
+        <section class="final-cta-section">
+            <div class="content-container">
+                <h2>Ingin Konsultasi Piringan yang Cocok?</h2>
+                <a href="https://wa.me/6285169412326" class="cta-button" target="_blank" rel="noopener noreferrer">Hubungi Kami Sekarang</a>
             </div>
-        </div>
-    </section>
-    <hr style="border: 1px solid #ccc; margin: 20px 0;">
+        </section>
 
+        <footer class="main-footer">
+            <div class="footer-content-wrapper">
+                <div class="footer-column footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="index.html#produk" target="_self">Produk</a></li>
+                        <li><a href="index.html#cara-order" target="_self">Cara Order</a></li>
+                        <li><a href="index.html#tentang-kami" target="_self">Tentang Kami</a></li>
+                        <li><a href="index.html#kebijakan-privasi" target="_self">Kebijakan Privasi</a></li>
+                        <li><a href="index.html#kontak" target="_self">Kontak</a></li>
+                    </ul>
+                </div>
 
-    <section id="piringan-produk" class="product-categories-section">
-        <img src="piringan-groza.png" alt="Piringn Delkevic" class="produk">
-        <h1>Piringan Groza</h1>
-        <p>Deskripsi Produk :</p>
-            <p>PICK / FOTO ASLI READY STOK! | DI JAMIN ORIGINAL GROZA | PIRINGAN ORIGINAL GROZA</p>
-            <p>Tersedia beberapa pilihan warna yang terbaik yang dapat meningkatkan look motor.</p>
-            <p>Untuk Piringan Groza Floating dan 260mm, konfirmasi pilihan warna melalui Chat!</p>
-            <p>HAPPY SHOOPING CEESS!!!</p>
-        <h2>Berbagai pilihan Piringan Groza</h2>
-        <div class="category-grid">
-            <div class="category-item">
-                <img src="piringan-groza-biru.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Biru<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Biru%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
+                <section id="kontak-piringan" class="footer-column contact-info"> <h3>Kontak Kami</h3> 
+                    <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank" rel="noopener noreferrer">085169412326</a></p>
+                    <p>Email: <a href="mailto:jarrsspeedgarage@gmail.com">jarrsspeedgarage@gmail.com</a></p>
+                    <p>Jam Operasional: Selasa - Minggu, 09:00 - 21:00 WIB</p>
+                </section>
+
+                <div class="footer-column social-media">
+                    <h3>Ikuti Kami</h3>
+                    <a href="LINK_FACEBOOK" target="_blank" rel="noopener noreferrer" aria-label="Facebook JarrsSpeedGarage">
+                        <i data-feather="facebook"></i>
+                    </a>
+                    <a href="LINK_INSTAGRAM" target="_blank" rel="noopener noreferrer" aria-label="Instagram JarrsSpeedGarage">
+                        <i data-feather="instagram"></i>
+                    </a>
+                </div>
             </div>
-            <div class="category-item">
-                <img src="piringan-groza-emas.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Emas<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Emas%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-hijau.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Hijau<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Hijau%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-merah.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Merah<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Merah%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-silver.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Silver<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Silver%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-ungu.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Ungu<br>All Type & Ukuran </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Ungu%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-alltype.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza Floating<br>All Type & Ukuran <br>Beat - Scoopy - Vario</h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Floating%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
-            <div class="category-item">
-                <img src="piringan-groza-size260mm.jpg" alt="piringan groza all type & Ukuran" />
-                <h3>Piringan Groza 260mm<br>All Type & Ukuran<br>All Motor </h3>
-                <a href="https://wa.me/6285169412326?text=Halo%2C%20saya%20ingin%20order%20Piringan%20Groza%20Biru%20All%20Type%20dan%20Ukuran%20dari%20JarrsSpeedGarage" class="lihat-produk-btn" target="_blank">
-                    Order via WhatsApp
-                </a>
-            </div>
+            <p class="copyright">&copy; <span id="currentYear"></span> JarrsspeedGarage. Semua Hak Dilindungi.</p>
+        </footer>
 
-
-            
-        </div>
-    </section>
-
-    <section class="final-cta-section">
-        <h2>Ingin Konsultasi Piringan yang Cocok?</h2>
-        <a href="https://wa.me/6285169412326" class="cta-button" target="_blank">Hubungi Kami Sekarang</a>
-    </section>
-
-    <footer>
-        <div class="footer-links">
-            <p><a href="index.html#produk">Produk</a></p>
-            <p><a href="index.html#cara-order">Cara Order</a></p>
-            <p><a href="index.html#tentang-kami">Tentang Kami</a></p>
-            <p><a href="index.html#kontak">Kontak</a></p>
-            <p><a href="index.html#kebijakan-privasi">Kebijakan Privasi</a></p>
-        </div>
-        <div class="contact-info">
-            <p>WhatsApp: <a href="https://wa.me/6285169412326" target="_blank">085169412326</a></p>
-            <p>Email: jarrsspeedgarage@gmail.com</p>
-            <p>Jam Operasional: Senin - Jumat, 09:00 - 17:00 WIB</p>
-        </div>
-        <div class="social-media">
-            <a href="LINK_FACEBOOK"><img src="https://img.icons8.com/?size=100&id=13912&format=png&color=000000" alt="Facebook" /></a>
-            <a href="LINK_INSTAGRAM"><img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" /></a>
-        </div>
-        <p class="copyright">&copy; 2025 JarrsspeedGarage. Semua Hak Dilindungi.</p>
-    </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menu = document.getElementById("menuList");
-        const hamburger = document.querySelector(".hamburger");
-        const overlay = document.querySelector(".overlay");
-        const nav = document.querySelector("header nav");
-        const menuLinks = document.querySelectorAll("#menuList a");
-
-        function toggleMenu() {
-            if (menu && overlay && nav) {
-                menu.classList.toggle("active");
-                overlay.classList.toggle("active");
-                nav.classList.toggle("active");
-            } else {
-                console.error("Elemen menuList, hamburger, overlay, atau nav tidak ditemukan.");
-            }
-        }
-
-        if (hamburger) {
-            hamburger.addEventListener('click', toggleMenu);
-        }
-        if (overlay) {
-            overlay.addEventListener('click', toggleMenu);
-        }
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (menu.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // ----- Kode Search Bar (Pastikan ini juga ada di index.html) -----
-        const searchInput = document.getElementById("searchInput");
-        const searchForm = document.getElementById("searchForm");
-        const productItems = document.querySelectorAll(".category-item");
-
-        function filterProducts() {
-            const searchTerm = searchInput.value.toLowerCase();
-
-            productItems.forEach(item => {
-                const productName = item.querySelector("h3").textContent.toLowerCase();
-                if (productName.includes(searchTerm)) {
-                    item.style.display = "flex";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        if (searchForm) {
-            searchForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                filterProducts();
-            });
-        }
-
-        if (searchInput) {
-            searchInput.addEventListener('keyup', filterProducts);
-        }
-        // --- Akhir Kode Search Bar ---
-    });
-</script>
-</body>
-</html>
+        <script src="script.js" defer></script>
+    </body>
+    </html>

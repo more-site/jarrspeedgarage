@@ -1,109 +1,246 @@
-/* Styling Umum */
+
+
+
+/* --- Variabel CSS (Custom Properties) --- */
+:root {
+    --primary-color: #000000; /* Hitam */
+    --accent-color: #E02B2B; /* Merah yang cocok dengan logo */
+    --secondary-button-color: #856969; /* Warna tombol sekunder */
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --background-light: #ffffff;
+    --background-dark: #333; /* Untuk footer */
+    --header-height-desktop: 70px;
+    --header-height-mobile: 100px; /* Diperkirakan, sesuaikan jika perlu */
+    --font-family-primary: 'Poppins', Arial, sans-serif;
+}
+
+/* --- Styling Umum --- */
 * {
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, opacity 0.3s ease; /* Pastikan ini ada dan aktif */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height-desktop);
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family-primary);
     margin: 0;
     padding: 0;
-    color: #000000;
+    color: var(--text-dark);
     overflow-x: hidden;
-    /* padding-top untuk desktop akan ditangani oleh margin-top hero-section */
+    padding-top: var(--header-height-desktop);
+
+    background-image: none;
+    /* background-color akan ditimpa oleh debugging style di atas */
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: #000000;
-    border-bottom: 1px solid #000000;
-    position: fixed; /* Header tetap terlihat saat scroll */
+/* Screen Reader Only Class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* --- CONTENT CONTAINER GLOBAL --- */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+/* --- Splash Screen Styling --- */
+.splash-screen {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Pastikan header di atas konten lain */
-}
-
-header .logo img {
-    height: 50px;
-    border-radius: 100%;
-}
-
-/* Penyesuaian untuk NAV (Menu Utama) - Desktop */
-header nav {
-    flex-grow: 1; /* Biarkan NAV memanjang untuk memusatkan menu */
+    height: 100%;
+    background-color: var(--primary-color);
     display: flex;
-    justify-content: center; /* Pusatkan UL di dalam NAV */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+    overflow: hidden;
+}
+
+.splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.splash-screen .splash-logo {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    animation: fadeAndMoveUp 2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.splash-screen .splash-text {
+    color: var(--text-light);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInText 1s ease-out forwards;
+    animation-delay: 1.5s;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Keyframes untuk animasi */
+@keyframes fadeAndMoveUp {
+    0% {
+        transform: translateY(50px) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: var(--header-height-desktop);
+}
+
+.main-header .logo img {
+    height: 3.5rem;
+    border-radius: 50%;
+    display: block;
+}
+
+/* --- Navigasi Utama (Desktop) --- */
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-header nav ul {
+.main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-header nav ul li {
-    margin-left: 20px;
+.main-nav ul li {
+    margin-left: 1.25rem;
 }
 
-header nav ul li a {
+.main-nav ul li a {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-header nav ul li a:hover {
-    color: #ff6600;
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 0.5rem 0;
     transition: color 0.3s ease;
 }
 
-/* Bilah Pencarian */
+.main-nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Bilah Pencarian --- */
 .search-bar {
     display: flex;
     align-items: center;
+    margin-left: 1.5rem;
 }
 
 .search-bar form {
     display: flex;
-    background-color: white;
-    border-radius: 5px;
+    background-color: var(--background-light);
+    border-radius: 0.3125rem;
     overflow: hidden;
+    border: 1px solid #ccc;
 }
 
 .search-bar input[type="text"] {
     border: none;
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
     font-size: 1em;
-    width: 180px;
+    width: 11.25rem;
     outline: none;
+    background-color: transparent;
 }
 
 .search-bar button {
-    background-color: #856969;
-    color: white;
+    background-color: var(--secondary-button-color);
+    color: var(--text-light);
     border: none;
-    padding: 8px 15px;
+    padding: 0.5rem 0.9375rem;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
     transition: background-color 0.3s ease;
 }
 
 .search-bar button:hover {
-    background-color: #e65c00;
+    background-color: var(--accent-color);
+}
+
+.search-bar button .feather {
+    width: 1rem;
+    height: 1rem;
+    stroke: var(--text-light);
+    stroke-width: 2.5;
 }
 
 /* Hamburger menu (Disembunyikan di desktop, ditunjukkan di mobile) */
 .hamburger {
-    display: none; /* Disembunyikan di desktop */
-    font-size: 30px;
+    display: none;
+    font-size: 1.875rem;
     cursor: pointer;
-    color: white;
-    z-index: 1001; /* Di atas menu off-canvas */
+    color: var(--text-light);
+    z-index: 1001;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* Overlay (Latar Belakang Gelap Saat Menu Terbuka) */
@@ -116,343 +253,514 @@ header nav ul li a:hover {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 999;
     display: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
 .overlay.active {
     display: block;
+    opacity: 1;
 }
 
 /* --- Hero Section (Global/Desktop) --- */
 .hero-section {
     position: relative;
     text-align: center;
-    color: rgb(255, 255, 255);
-    height: 500px; /* Tinggi tetap untuk desktop */
-    
-    /* Dorong hero-section di bawah header fixed di desktop */
-    margin-top: 70px; /* SESUAIKAN DENGAN TINGGI HEADER DESKTOP ANDA */
-    
+    color: var(--text-light);
+    min-height: 550px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; /* Pusatkan konten secara vertikal */
     align-items: center;
     overflow: hidden;
-    padding: 0; /* Pastikan tidak ada padding tambahan yang menyebabkan gap */
+    padding: 0; /* Hapus padding-top dan padding-bottom */
+    background-color: var(--primary-color);
+    margin-top: 0;
 }
 
+/* Pastikan tidak ada pseudo-element ::before yang mencoba memasang background-image */
 .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(50%);
-    z-index: -1;
+    content: none;
+    background-image: none !important;
 }
 
-/* ATUR GAMBAR BACKGROUND UNTUK MASING-MASING HALAMAN */
-.hero-home::before {
-    background-image: url('jars.JPG'); /* Gambar untuk index.html */
+/* STYLE UNTUK LOGO jars.JPG (YANG SEKARANG DI DALAM HERO-CONTENT) */
+/* Karena logo dihilangkan dari velg.html dan shock.html, gaya ini hanya berlaku untuk index.html */
+.hero-logo-display {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 0.5rem; /* Kurangi jarak bawah logo */
 }
 
-.hero-velg::before {
-    background-image: url('velg1.jpeg'); /* Gambar untuk velg.html */
-}
 
-.hero-velg1::before {
-    background-image: url('rcb.jpeg');
-}
-
-/* Sembunyikan tag <img> di HTML karena kita pakai ::before */
-.hero-section img {
-    display: none;
-}
-
-.hero-content {
+.hero-content { /* Ini adalah div yang menerima content-container di index.html & velg.html */
     position: relative;
-    width: 80%;
-    max-width: 800px;
+    /* max-width sudah diatur di content-container */
     z-index: 1;
-    padding: 0;
-    margin: 0;
+    padding: 20px; /* Padding internal untuk hero-content */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* --- Tombol CTA (PENTING! Pastikan ini ada dan tidak diubah!) --- */
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem; /* Jarak H1 dan P */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 700;
+    margin-top: -2.5rem; /* Geser H1 ke atas agar lebih dekat dengan logo (lebih agresif) */
+    letter-spacing: 0.05em; /* Jarak antar huruf pada H1 */
+    font-style: italic; /* H1 menjadi Italic */
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; /* Jarak P dan CTA Button disesuaikan */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-weight: 300; /* Font lebih tipis untuk P */
+    letter-spacing: 0.02em; /* Jarak antar huruf pada P */
+}
+
+/* --- Tombol CTA --- */
 .cta-button {
     display: inline-block;
-    background-color: #856969; /* Warna tombol */
-    color: white;
-    padding: 15px 30px;
+    background-color: var(--secondary-button-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    border-radius: 0.75rem; /* Radius lebih besar (12px) */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+    border: none !important; /* Pastikan tidak ada border debugging */
+    min-width: auto !important; /* Hapus min-width debugging */
+    min-height: auto !important; /* Hapus min-height debugging */
+    box-sizing: border-box;
+    letter-spacing: 0.05em; /* Jarak antar huruf pada tombol */
 }
 
 .cta-button:hover {
-    background-color: #e65c00;
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
 }
 
-/* --- Bagian Keunggulan (Tidak Berubah) --- */
-.advantage-item {
-    padding: 20px;
-    background-color: #ffffff;
+/* --- Highlight Title for Aesthetics --- */
+.highlight-title {
+    color: var(--accent-color); /* Warna merah yang cocok dengan logo */
+    /* Anda bisa tambahkan font-weight atau text-shadow jika diinginkan */
+    /* font-weight: 700; */
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.3); */
+}
+
+/* --- Kategori Produk (Lihat Produk Button) --- */
+.lihat-produk-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.625rem 1.25rem;
+    margin-top: 0.625rem;
+    text-decoration: none;
+    border-radius: 0.75rem; /* Radius lebih besar (12px) */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+    font-size: 0.9rem;
+}
+
+.lihat-produk-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* --- Bagian Keunggulan & Product Brand Section (Umum) --- */
+/* Section wrapper untuk padding vertikal & background */
+.advantages-section,
+.product-brand-section, /* Untuk velg.html */
+.product-categories-section, /* Untuk index.html */
+.final-cta-section,
+.info-section {
+    padding-top: 3rem; /* Padding atas untuk section */
+    padding-bottom: 3rem; /* Padding bawah untuk section */
+    text-align: center;
+    background-color: var(--background-light); /* Default putih */
+    margin-top: 0; /* Hapus margin-top lama */
+    margin-bottom: 0; /* Hapus margin-bottom lama */
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.05);
+}
+
+/* Memberi warna background selang-seling untuk product-brand-section */
+.product-brand-section:nth-of-type(odd) { /* Perubahan dari :nth-child(even) */
+    background-color: var(--background-light); /* Putih */
+}
+
+.product-brand-section:nth-of-type(even) {
+    background-color: #f9f9f9; /* Abu-abu muda */
+}
+
+
+.product-brand-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.product-brand-section h3 { /* Untuk "Varian Warna Velg Delkevic" */
+    font-size: 1.8rem;
+    margin-top: 2rem; /* Jarak dari deskripsi produk */
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* --- Product Detail Block (untuk deskripsi utama produk per merek) --- */
+.product-detail-block {
+    display: block; /* Mengembalikan display ke block */
+    max-width: 600px; /* Lebar maksimal untuk blok deskripsi 2 kolom */
+    margin: 0 auto; /* Pusatkan blok ini */
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+    
+    /* border: 5px solid red !important; */ /* HAPUS DEBUGGING BORDER */
+}
+
+/* STYLE UNTUK GAMBAR UTAMA PRODUK SETELAH DIHAPUS DARI HTML */
+/* Blok CSS ini tidak diperlukan lagi karena tag <img>-nya akan dihapus dari HTML */
+/*
+.product-main-image {
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 0;
     border-radius: 8px;
-    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: 20px auto;
-    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.product-main-image.loaded {
+    opacity: 1;
+}
+*/
+
+.product-description {
+    text-align: left; /* Teks di dalam kolom tetap rata kiri */
+    line-height: 1.6;
+    color: #444;
+    font-size: 1rem;
+    
+    columns: 2; /* Bagi konten menjadi 2 kolom */
+    column-gap: 0.5rem; /* Kurangi jarak antar kolom lagi */
 }
 
-/* --- Kategori Produk (Global/Desktop) --- */
-.product-categories-section {
-    padding: 50px 5%;
-    text-align: center;
-    background-color: #ffffff;
+.product-description p {
+    margin-bottom: 0.8rem;
 }
 
+/* --- Category Item (untuk varian warna velg) --- */
+/* (Style ini sebagian besar sudah ada dari index.html) */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ukuran kolom desktop */
-    gap: 30px; /* Jarak antar item desktop */
-    margin-top: 30px;
-}
-
-img.produk {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ukuran kolom lebih kecil untuk varian */
+    gap: 1.5rem; /* Jarak antar item varian */
+    margin-top: 2rem;
 }
 
 .category-item {
-    background-color: #ffffff;
-    border-radius: 8px;
+    background-color: var(--background-light);
+    border-radius: 0.5rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding-bottom: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Push button to bottom */
+    align-items: center; /* Pusatkan konten item */
+    text-align: center;
+    border: 1px solid #eee;
+    min-height: 300px; /* Set minimum tinggi untuk keselarasan button */
 }
 
 .category-item img {
     width: 100%;
-    height: 200px;
-    object-fit: contain;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    height: 150px; /* Kembali ke tinggi tetap untuk gambar varian */
+    object-fit: contain; /* Memastikan gambar tidak terpotong */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Pastikan ini ada */
 }
 
-.lihat-produk-btn {
-    display: inline-block;
-    background-color: #000000;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 10px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: center;
+.category-item img.loaded {
+    opacity: 1;
 }
 
-.lihat-produk-btn:hover {
-    background-color: #e65c00;
-    transform: scale(1.05);
+.category-item h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    padding: 0 1rem;
+    margin-top: 0;
+    height: 2.8em; /* Tinggi tetap untuk H3 agar judul sejajar */
+    overflow: hidden; /* Sembunyikan teks yang meluap */
+    line-height: 1.4em; /* Tinggi baris untuk perhitungan 2 baris */
+    margin-bottom: 0.5rem; /* Konsistenkan margin bawah */
+    font-weight: 500;
 }
 
-.final-cta-section {
-    background-color: #ffffff;
+.category-item h4 { /* Untuk velg/shock variant names */
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    padding: 0 1rem;
+    margin-top: 0;
+    height: 2.8em; /* Tinggi tetap untuk H4 agar judul sejajar */
+    overflow: hidden; /* Sembunyikan teks yang meluap */
+    line-height: 1.4em; /* Tinggi baris untuk perhitungan 2 baris */
+    margin-bottom: 0.5rem; /* Konsistenkan margin bawah */
+    font-weight: 500;
+}
+
+/* --- Section Divider (HR) --- */
+.section-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 4rem 0; /* Jarak atas dan bawah */
+    width: 80%;
+    max-width: 900px;
+    background-color: transparent;
+}
+
+
+/* --- INFO SECTION (Cara Order, Tentang Kami, Kebijakan Privasi) --- */
+.info-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     text-align: center;
-    padding: 50px 5%;
+    background-color: #eee; /* Background abu-abu terang */
+    color: var(--text-dark);
+    margin-bottom: 0;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.05);
 }
 
-/* --- Footer (Global/Desktop) --- */
-footer section {
-    padding: 20px 2%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-    width: 100%;
+.info-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
-footer section h2 {
-    margin-bottom: 10px;
-    color: white;
+.info-section ol { /* Untuk Cara Order */
+    list-style-type: none; /* Hilangkan penomoran */
+    list-style-position: outside; /* Penting untuk kontrol */
+    text-align: center; /* Teks langkah-langkah rata tengah */
+    max-width: 600px; /* Batasi lebar daftar */
+    margin: 0 auto; /* Pusatkan daftar */
+    padding-left: 0; /* Hapus padding default OL */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 400;
 }
 
-footer section ol {
-    list-style-position: inside;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    padding-left: 0;
+.info-section ol li {
+    margin-bottom: 0.5rem; /* Jarak antar langkah */
+    padding-left: 0; /* Pastikan tidak ada padding tambahan pada li */
 }
 
-footer section p {
+
+.info-section p {
     max-width: 800px;
-    margin: 0 auto 10px;
-    color: white;
+    margin: 0.5rem auto 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 5%;
-    text-align: center;
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 2.5rem 5%;
+    text-align: center; /* Default text-align for footer */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Jarak antar elemen footer desktop */
+    gap: 1.5rem;
 }
 
-footer .footer-links,
-footer .contact-info,
-footer .social-media {
+.footer-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
+    max-width: 1200px;
 }
 
-footer .footer-links p {
-    margin-bottom: 5px;
+.footer-column {
+    flex-basis: 30%;
+    min-width: 200px;
+    margin-bottom: 1.5rem;
+    text-align: left; /* Text alignment for columns in desktop */
 }
 
-footer .footer-links p a {
-    display: inline-block;
-    padding: 5px 0;
+/* TAUTAN CEPAT - UL/LI */
+.footer-column.footer-links ul {
+    list-style-type: none; /* Hilangkan titik-titik */
+    padding: 0; /* Hapus padding default UL */
+    margin: 0; /* Hapus margin default UL */
 }
 
-footer a {
-    color: white;
+.footer-column.footer-links ul li {
+    margin-bottom: 0.5rem; /* Jarak antar item daftar */
+}
+
+.footer-column h3 { /* Style h3 in footer columns */
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.main-footer a {
+    color: var(--text-light);
     text-decoration: none;
-    margin: 0 10px;
+    transition: color 0.3s ease;
+    font-weight: 400;
 }
 
-footer .social-media img {
-    height: 30px;
-    width: 30px;
-    margin: 0 10px;
-    filter: invert(100%);
+.main-footer a:hover {
+    color: var(--accent-color);
+}
+
+.social-media img {
+    display: none;
+}
+
+.social-media .feather {
+    width: 1.875rem;
+    height: 1.875rem;
+    stroke: var(--text-light);
+    fill: none;
+    stroke-width: 2;
+    transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.social-media a:hover .feather {
+    transform: translateY(-3px);
+    stroke: var(--accent-color);
 }
 
 .copyright {
-    margin-top: 20px;
+    margin-top: 1rem;
     width: 100%;
     text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
 }
 
-/* --- Media Queries (Revisi untuk Mobile) --- */
+/* --- Media Queries (Responsif) --- */
 @media (max-width: 768px) {
-    /* PENTING: TAMBAH PADDING-TOP DI BODY UNTUK MOBILE */
+    html {
+        scroll-padding-top: var(--header-height-mobile);
+    }
+
     body {
-        /* SESUAIKAN NILAI INI. Ini harus sama atau sedikit lebih besar dari tinggi header fixed Anda di mobile. */
-        /* Anda perlu mengukur tinggi header di DevTools mobile Anda */
-        padding-top: 120px; /* Nilai awal yang lebih aman. Jika masih ada gap/tumpang tindih, ubah ini. */
+        padding-top: var(--header-height-mobile);
+    }
+
+    /* Splash Screen Mobile */
+    .splash-screen .splash-logo {
+        width: 100px;
+    }
+    .splash-screen .splash-text {
+        font-size: 2rem;
+    }
+
+    /* Hero Section Mobile (gambar hero juga responsif) */
+    .hero-section {
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+        min-height: 25rem;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.25rem;
     }
 
     /* Header mobile */
-    header {
+    .main-header {
         flex-wrap: wrap;
-        align-items: flex-start;
-        height: auto; /* Biarkan tinggi header menyesuaikan kontennya */
-        padding-bottom: 10px; /* Beri sedikit padding di bagian bawah header */
+        align-items: center;
+        height: auto;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
     }
-
-    header .logo {
+    .main-header .logo {
         order: 1;
+        margin-right: auto;
     }
-
     .hamburger {
         display: block;
-        order: 1;
-        margin-left: auto;
-        padding: 0 10px;
-    }
-
-    .search-bar {
-        width: 100%;
         order: 2;
-        margin-top: 10px;
-        background-color: white; /* Background untuk seluruh search bar */
-        border-radius: 5px; /* Border-radius untuk seluruh search bar */
+        margin-left: 1rem;
+    }
+    .search-bar {
+        width: 90%;
+        order: 3;
+        margin-top: 0.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: var(--background-light);
+        border-radius: 0.3125rem;
         display: flex;
-        justify-content: center; /* Memusatkan form di dalamnya */
+        justify-content: center;
         align-items: center;
-        padding: 0; /* Pastikan tidak ada padding di sini */
-        /* PENTING: Berikan tinggi eksplisit atau padding vertikal untuk .search-bar */
-        height: 40px; /* Coba berikan tinggi tetap untuk seluruh kotak pencarian */
+        padding: 0;
+        height: 2.5rem;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     }
-
     .search-bar form {
-        display: flex;
-        background-color: transparent; /* Pastikan form tidak punya background sendiri */
-        overflow: hidden; /* Penting untuk membulatkan sudut konten di dalamnya */
-        width: 100%; /* Pastikan form mengisi lebar penuh .search-bar */
-        height: 100%; /* PENTING: Pastikan form mengisi tinggi penuh .search-bar */
-        
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
         justify-content: space-between;
-        align-items: stretch; /* Membuat item mengisi tinggi flex container */
-        
-        padding: 0; 
-        margin: 0;
+        align-items: stretch;
     }
-
     .search-bar input[type="text"] {
-        border: none;
-        padding: 0 12px; /* HAPUS padding atas/bawah, akan ditangani oleh tinggi total */
-        font-size: 1em;
-        flex-grow: 1;
-        outline: none;
-        background-color: transparent; /* Pastikan input background transparan */
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        height: 100%; /* PENTING: Input juga mengisi tinggi penuh form */
+        padding: 0 0.75rem;
+        font-size: 0.9rem;
+        height: 100%;
+        background-color: transparent;
     }
-
     .search-bar button {
-        background-color: #856969;
-        color: white;
-        border: none;
-        padding: 0 15px; /* HAPUS padding atas/bawah, akan ditangani oleh tinggi total */
-        cursor: pointer;
-        font-weight: bold;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        height: 100%; /* PENTING: Tombol juga mengisi tinggi penuh form */
+        padding: 0 1rem;
+        height: 100%;
+        font-size: 0.9rem;
     }
-
 
     /* Penyesuaian untuk NAV (Menu Utama) - OFF-CANVAS MENU */
-    header nav {
+    .main-nav {
         position: fixed;
         top: 0;
-        left: -100%;
-        width: 250px;
+        left: -16rem;
+        width: 15rem;
         height: 100%;
         background-color: #222;
-        padding-top: 80px; /* Padding dari atas agar tidak tumpang tindih dengan header */
+        padding-top: 5rem;
         transition: left 0.3s ease-in-out;
         z-index: 1000;
         flex-grow: 0;
         flex-direction: column;
         align-items: flex-start;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+        box-shadow: 0.125rem 0 0.3125rem rgba(0,0,0,0.5);
     }
-
-    header nav.active {
+    .main-nav.active {
         left: 0;
     }
-
-    /* KUNCI: Tampilkan UL saat NAV aktif! */
-    header nav ul { /* Aturan default UL di mobile, disembunyikan saat NAV tidak aktif */
-        display: none; /* Sembunyikan UL secara default */
+    .main-nav ul {
+        display: flex;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -460,111 +768,138 @@ footer .social-media img {
         flex-direction: column;
         text-align: left;
     }
-
-    header nav.active ul { /* Tampilkan UL hanya ketika NAV memiliki kelas 'active' */
-        display: flex; /* INI YANG AKAN MEMBUAT MENU TERLIHAT */
-    }
-
-
-    header nav ul li {
+    .main-nav ul li {
         margin: 0;
-        padding: 15px 20px;
+        padding: 1rem 1.25rem;
         width: 100%;
         border-bottom: 1px solid #444;
     }
-
-    header nav ul li a {
-        color: #fff;
+    .main-nav ul li a {
+        color: var(--text-light);
         text-decoration: none;
         display: block;
+        font-size: 1rem;
     }
-
-    header nav ul li a:hover {
+    .main-nav ul li a:hover {
         background-color: #444;
     }
 
-    /* Hero Section dan Hero Content di Mobile */
-    .hero-section {
-        margin-top: 0; /* Pastikan tidak ada margin-top lagi di mobile */
-        padding-top: 50px; /* Padding internal untuk space di atas konten hero */
-        padding-bottom: 50px; /* Padding bawah */
-        
-        height: auto;
-        min-height: 400px;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    /* --- Product Detail Block Mobile --- */
+    .product-detail-block {
+        flex-direction: column; /* Ubah ke tumpukan vertikal di mobile */
+        align-items: center; /* Pusatkan gambar dan teks */
+        text-align: center; /* Teks deskripsi rata tengah */
+        /* grid-template-columns: unset; */ /* Hapus aturan grid di mobile */
     }
-    
-    .hero-content {
-        position: static;
-        width: 100%;
-        transform: none;
-        top: auto;
-        left: auto;
-        padding: 0 5%;
-        box-sizing: border-box;
+    .product-main-image {
+        max-width: 60%; /* Gambar utama lebih besar di mobile */
+        margin-bottom: 1.5rem; /* Tambah jarak bawah gambar */
     }
-    
-    .hero-content h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
-    }
-
-    .hero-content p {
-        font-size: 1em;
-        margin-bottom: 20px;
-    }
-
-    .hero-content .cta-button {
-        margin-top: 10px;
-    }
-
-    img.produk {
-        max-width: 100%;
-        height: auto;
-        margin: 20px auto;
+    .product-description { /* DI MOBILE KEMBALI 1 KOLOM */
+        columns: 1;
+        column-gap: normal;
+        text-align: left; /* Teks deskripsi di mobile kembali rata kiri (opsional, bisa center) */
     }
 
     /* Kategori Produk Mobile */
+    .product-categories-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-top: 0;
+    }
     .category-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    .category-item img {
+        height: 10rem;
     }
 
-    .advantage-item {
-        flex-basis: 48%;
+    /* Info Sections Mobile */
+    .info-section {
+        padding: 2rem 5%;
+        margin-bottom: 1.5rem;
+    }
+    .info-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    .info-section ol, .info-section p {
+        font-size: 0.9rem;
     }
 
     /* Footer Mobile */
-    footer {
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 5%;
+        gap: 1rem;
+    }
+    .footer-content-wrapper {
         flex-direction: column;
         align-items: center;
     }
-
-    footer section {
-        margin-bottom: 30px;
-    }
-
-    footer .footer-links,
-    footer .contact-info,
-    footer .social-media {
-        width: auto;
-        margin-bottom: 0;
-    }
-
-    footer .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+    .footer-column {
+        flex-basis: auto;
+        min-width: unset;
         width: 100%;
+        text-align: center; /* Teks rata tengah saat bertumpuk */
+        margin-bottom: 1rem;
+    }
+    .footer-column ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: center; /* Pusatkan item ul saat bertumpuk */
+    }
+    .footer-column ul li {
+        padding: 0.2rem 0;
+    }
+}
+
+/* Penyesuaian untuk layar yang sangat kecil (< 480px) */
+@media (max-width: 480px) {
+    .splash-screen .splash-logo {
+        width: 80px;
+    }
+    .splash-screen .splash-text {
+        font-size: 1.5rem;
     }
 
-    footer .footer-links p {
-        margin-bottom: 0;
+    .main-header {
+        padding: 0.8rem 1rem;
+    }
+    .main-header .logo img {
+        height: 3rem;
+    }
+    .search-bar {
+        width: 95%;
+    }
+    .search-bar input[type="text"] {
+        padding: 0 0.75rem;
+        font-size: 0.9rem;
+        height: 100%;
+        background-color: transparent;
+    }
+    .search-bar button {
+        padding: 0 1rem;
+        height: 100%;
+        font-size: 0.9rem;
     }
 
-    footer .footer-links p a {
-        padding: 0;
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .product-categories-section h2, .info-section h2 {
+        font-size: 1.5rem;
+    }
+    .category-grid {
+        grid-template-columns: 1fr;
     }
 }
